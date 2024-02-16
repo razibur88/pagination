@@ -1,19 +1,6 @@
 import React from "react";
 
-const PaginationArea = ({
-  totalPage,
-  perpage,
-  paginate,
-  next,
-  prev,
-  currentPage,
-}) => {
-  let pageNumber = [];
-  for (let i = 1; i < Math.ceil(totalPage / perpage); i++) {
-    pageNumber.push(i);
-  }
-
-  console.log(currentPage);
+const PaginationArea = ({ pageNum, paginate, next, prev, currentPage }) => {
   return (
     <>
       <nav aria-label="Page navigation example">
@@ -38,7 +25,7 @@ const PaginationArea = ({
               </svg>
             </a>
           </li>
-          {pageNumber.map((item, i) => (
+          {pageNum.map((item, i) => (
             <li
               className={
                 currentPage == i + 1
@@ -48,7 +35,7 @@ const PaginationArea = ({
               key={i}
               onClick={() => paginate(item)}
             >
-              <a>{item}</a>
+              <a>{item + 1}</a>
             </li>
           ))}
           <li onClick={next}>
